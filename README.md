@@ -37,7 +37,7 @@ default, this script add path **both bash/zsh & fish**
 
     displays help for this tool
 
-- ```jobgosh -time [period of time]``` 
+- ```jobgosh -t [period of time]``` 
 
     see how long u spend times for each group.
 
@@ -47,15 +47,13 @@ default, this script add path **both bash/zsh & fish**
     - year (this year)
     - all (all the time)
 
-- ```gpshr -up``` 
+- ```gpshr -w [up | down]``` 
 
-    start work
+    ```up``` to start work
 
-- ```gpshr -down``` 
+    ```down``` to finish work
 
-    finish work
-
-    listen, u need to do this unless u waste whole ur work time
+    listen, u need to ```down``` unless u waste whole ur work time
 
 
 ## doesnt work? 
@@ -109,7 +107,7 @@ chmod +x install.sh
 
     jobgoshの使い方を表示します
 
-- ```jobgosh -time [期間]``` 
+- ```jobgosh -t [期間]``` 
 
     期間でどれだけ時間を費やしたかグループ別で表示します
 
@@ -119,15 +117,13 @@ chmod +x install.sh
     - year (今年の合算時間)
     - all (いままでの合算時間)
 
-- ```gpshr -up``` 
+- ```gpshr -w [up | down]``` 
 
-    作業を始める時のコマンドです
+    ```up```　で作業を始める時のコマンドです
 
-- ```gpshr -down``` 
+    ```down```で作業が終わった時のコマンドです
 
-    作業が終わった時のコマンドです
-
-    これを実行しないと時間が合算されませんので気をつけてください
+    注意事項: ```down```実行しないと時間が合算されませんので気をつけてください
 
 
 ## 動きません！
