@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"strconv"
+	"time"
 )
 
 type Group struct {
@@ -16,8 +17,9 @@ type Group struct {
 }
 
 type Log struct {
-	Up   string `json:"up"`
-	Down string `json:"down"`
+	Up        string `json:"up"`
+	Down      string `json:"down"`
+	IsVisible bool   `json:"isVisible"`
 }
 
 // seach files in the assigned directory and return an array of the files
@@ -64,6 +66,22 @@ func LoadGroupJson() []Group {
 	return allGroups
 }
 
+func LoadLogJson(directoryName string) []Log {
+	// load json file
+	bytes, err := ioutil.ReadFile(homePath + logPath + directoryName + ".json")
+	if err != nil {
+		fmt.Println(string(colorRed), "! error #04, log json not found", string(colorReset))
+		os.Exit(0)
+	}
+	var allLog []Log
+	if err := json.Unmarshal(bytes, &allLog); err != nil {
+		fmt.Println(string(colorRed), "! error #04, log json not found", string(colorReset))
+		os.Exit(0)
+	}
+
+	return allLog
+}
+
 // save group json
 func SaveGroupJson(_allGroups []Group) {
 	str, _ := json.MarshalIndent(_allGroups, "", "   ")
@@ -75,75 +93,6 @@ func SaveLogJson(directoryName string) {
 	var log []Log
 	str, _ := json.MarshalIndent(log, "", "   ")
 	ioutil.WriteFile(homePath+logPath+directoryName+".json", str, 0644)
-}
-
-// new group maker
-func MakeNewGroup() string {
-
-	// get a current directory
-	_currentDir, _ := os.Getwd()
-	directoryName := filepath.Base(_currentDir)
-
-	// non-exist
-	fmt.Print("\n")
-	fmt.Println("> seems like [" + directoryName + "] isnt organised by any groups currently")
-	fmt.Print("\n")
-	fmt.Println(string(colorCyan), "? select a group:\n", string(colorReset))
-
-	allGroups := LoadGroupJson()
-
-	// list the groups
-	for i, p := range allGroups {
-		fmt.Printf("[%d] : %s\n", i+1, p.Group)
-	}
-	fmt.Println("[*] : add a new group")
-
-	fmt.Print("\nenter the number :")
-
-	//input number
-	var _input string
-	var _group string = ""
-
-	fmt.Scan(&_input)
-	// int input into group name
-	for i, v := range allGroups {
-		_string_to_int, _ := strconv.Atoi(_input)
-		if i+1 == _string_to_int {
-			_group = v.Group
-			break
-		}
-	}
-	if "*" == _input {
-		_group = "*"
-	}
-
-	if _group == "" {
-		fmt.Println("no group entered, current process will be no longer exist")
-		os.Exit(0)
-	}
-
-	if _group == "*" {
-		fmt.Print("\nenter a new group name :")
-
-		//input number
-		var _input string
-
-		fmt.Scan(&_input)
-		if _group == "" {
-			fmt.Println("no group entered, current process will be no longer exist")
-			os.Exit(0)
-		}
-
-		// add new group into the json
-		AddAsGroupMember(_input, directoryName, SaveNewGroup(_input, directoryName, allGroups))
-		SaveLogJson(directoryName)
-		return _input
-
-	} else {
-		AddAsGroupMember(_group, directoryName, allGroups)
-		SaveLogJson(directoryName)
-		return _group
-	}
 }
 
 // new group object into existing array
@@ -190,10 +139,39 @@ func FindGroup(directoryName string) string {
 	return group
 }
 
-func PrintProgress(_group string, directoryName string, progress string) {
+// Up Down display thingy
+func PrintProgress(_group string, directoryName string, progress string, cAmount int64) {
+	now := time.Now()
+	t := time.Unix(cAmount, 0)
+	hour, min, sec := t.Clock()
+
 	fmt.Printf(string(colorGreen))
 	fmt.Print("\n")
-	fmt.Println("["+directoryName+"] ditails", string(colorReset))
+	fmt.Println("["+directoryName+" ditails]", string(colorReset))
 	fmt.Println("> group : " + _group)
-	fmt.Println("> progress : " + progress + "\n")
+	fmt.Println("> progress : " + progress + "")
+	fmt.Printf(string(colorGreen))
+	fmt.Print("\n", string(colorCyan))
+	if progress == "up" {
+		fmt.Println("> timestamped at " + now.Format("2006/01/02 15:04:05") + "\n")
+	} else if progress == "down" {
+		fmt.Print("> timestamped at " + now.Format("2006/01/02 15:04:05"))
+		fmt.Print("\n")
+		fmt.Println("> " + strconv.Itoa(hour) + "h " + strconv.Itoa(min) + "m " + strconv.Itoa(sec) + "s added\n")
+	}
+
+}
+
+func UnixTimeCalc(up string, down string) int64 {
+	_up, _ := time.Parse("2006/01/02 15:04:05", up)
+	_down, _ := time.Parse("2006/01/02 15:04:05", down)
+	_UnixedDown := _up.Unix()
+	_UnixedUp := _down.Unix()
+
+	result := _UnixedUp - _UnixedDown
+	fmt.Println(_UnixedDown)
+	fmt.Println(_UnixedUp)
+
+	return result
+
 }
