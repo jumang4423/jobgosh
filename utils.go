@@ -11,17 +11,6 @@ import (
 	"time"
 )
 
-type Group struct {
-	Group     string   `json:"group"`
-	WorkSpace []string `json:"workSpace"`
-}
-
-type Log struct {
-	Up        string `json:"up"`
-	Down      string `json:"down"`
-	IsVisible bool   `json:"isVisible"`
-}
-
 // seach files in the assigned directory and return an array of the files
 func Dirsearch(dir string) []string {
 
@@ -51,6 +40,7 @@ func IsExist(dir string) bool {
 }
 
 func LoadGroupJson() []Group {
+
 	// load json file
 	bytes, err := ioutil.ReadFile(homePath + groupPath + "group.json")
 	if err != nil {
@@ -67,6 +57,7 @@ func LoadGroupJson() []Group {
 }
 
 func LoadLogJson(directoryName string) []Log {
+
 	// load json file
 	bytes, err := ioutil.ReadFile(homePath + logPath + directoryName + ".json")
 	if err != nil {
@@ -141,8 +132,9 @@ func FindGroup(directoryName string) string {
 
 // Up Down display thingy
 func PrintProgress(_group string, directoryName string, progress string, cAmount int64) {
+	loc, _ := time.LoadLocation("UTC")
 	now := time.Now()
-	t := time.Unix(cAmount, 0)
+	t := time.Unix(cAmount, 0).In(loc)
 	hour, min, sec := t.Clock()
 
 	fmt.Printf(string(colorGreen))
@@ -163,15 +155,53 @@ func PrintProgress(_group string, directoryName string, progress string, cAmount
 }
 
 func UnixTimeCalc(up string, down string) int64 {
+	loc, _ := time.LoadLocation("UTC")
 	_up, _ := time.Parse("2006/01/02 15:04:05", up)
 	_down, _ := time.Parse("2006/01/02 15:04:05", down)
-	_UnixedDown := _up.Unix()
-	_UnixedUp := _down.Unix()
+	_UnixedDown := _down.In(loc).Unix()
+	_UnixedUp := _up.In(loc).Unix()
 
-	result := _UnixedUp - _UnixedDown
-	fmt.Println(_UnixedDown)
-	fmt.Println(_UnixedUp)
-
+	result := _UnixedDown - _UnixedUp
 	return result
+}
 
+func SpaceSumCalc(logJson []Log, from int64, to int64) int64 {
+	loc, _ := time.LoadLocation("UTC")
+	var sum int64 = 0
+
+	// one space
+	for _, v := range logJson {
+		_up, _ := time.Parse("2006/01/02 15:04:05", v.Up)
+		_UnixedUp := _up.In(loc).Unix()
+		if _UnixedUp > from && _UnixedUp < to && v.IsVisible {
+			sum += UnixTimeCalc(v.Up, v.Down)
+		}
+	}
+	return sum
+}
+
+func TimeCalc(from int64, to int64, listOfData []Result) []Result {
+	for i, v := range listOfData {
+
+		var spaceSum int64 = 0
+		for j, r := range v.SumGroup {
+			logJson := LoadLogJson(r.WorkSpace)
+			// result sum of workSpace time
+			var workSpaceSum int64 = SpaceSumCalc(logJson, from, to)
+			listOfData[i].SumGroup[j].Sum = workSpaceSum
+			spaceSum += workSpaceSum
+		}
+
+		listOfData[i].Sum = spaceSum
+	}
+
+	return listOfData
+}
+
+func UnixToHMS(cAmount int64) (int, int, int) {
+	loc, _ := time.LoadLocation("UTC")
+	t := time.Unix(cAmount, 0).In(loc)
+	hour, min, sec := t.Clock()
+
+	return hour, min, sec
 }

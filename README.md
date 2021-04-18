@@ -37,17 +37,19 @@ default, this script add path **both bash/zsh & fish**
 
     displays help for this tool
 
-- ```jobgosh -t [period of time]``` 
+- ```jobgosh -times all``` 
 
     see how long u spend times for each group
 
-    [period of time] shoule be like...
+- ```jobgosh -from [YYYY/MM/DD] -to [YYYY/MM/DD]``` 
 
-    - month (this month)
-    - year (this year)
-    - all (all the time)
+    more specific option of -t all
 
-- ```jobgosh -w [up | down]``` 
+    u can choose the duration
+
+- ```jobgosh -work [up | down]```
+
+    will be assigned current directory as a work space
 
     ```up``` to start work
 
@@ -117,19 +119,19 @@ chmod +x install.sh
 
     jobgoshの使い方を表示します
 
-- ```jobgosh -t [期間]``` 
+- ```jobgosh -times all``` 
 
-    期間でどれだけ時間を費やしたかグループ別で表示します
+    個別のグループでどれだけ時間を費やしたか表示されます
 
-    期間に入るべきワード
+- ```jobgosh -from [YYYY/MM/DD] -to [YYYY/MM/DD]``` 
 
-    - month (今月の合算時間)
-    - year (今年の合算時間)
-    - all (いままでの合算時間)
+    期間を指定することでその間どれだけ作業をしたか表示されます
 
-- ```jobgosh -w [up | down]``` 
+- ```jobgosh -work [up | down]``` 
 
-    ```up```　で作業を始める時のコマンドです
+    現在のディレクトリを一つのワークスペースとして認識し時間をはかります
+
+    ```up```で作業を始める時のコマンドです
 
     ```down```で作業が終わった時のコマンドです
 

@@ -10,9 +10,10 @@ func Help() {
 	fmt.Println("\n> jobgosh@" + Version)
 
 	fmt.Println(string(colorGreen), "\n Usage: jobgosh -command\n", string(colorReset))
-	fmt.Println("	jobgosh -t [period of time]     see how long u spend times for each group, [period of time] should be month, year or all")
-	fmt.Println("	jobgosh -w [up | down]          up to start work and down to finish work\n")
+	fmt.Println("	jobgosh -times all                              see how long u spend times for each group")
+	fmt.Println("	jobgosh -from [YYYY/MM/DD] -to [YYYY/MM/DD]     specify duration")
+	fmt.Println("	jobgosh -work [up | down]                       up to start work and down to finish\n")
 
 	fmt.Println(string(colorGreen), "All commands:\n", string(colorReset))
-	fmt.Println("	-t, -w\n")
+	fmt.Println("	-times, -from, -to, -w\n")
 }
