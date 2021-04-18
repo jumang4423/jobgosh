@@ -12,7 +12,7 @@ import (
 // variables
 var (
 	DOCKER_DEVELOPMENT        = false
-	Version            string = "v0.1"
+	Version            string = "v0.2"
 	Revision           string = "17/04/2021"
 	logPath            string = "log/"
 	groupPath          string = "group/"

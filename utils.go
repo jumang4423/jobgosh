@@ -137,7 +137,9 @@ func PrintProgress(_group string, directoryName string, progress string, cAmount
 	loc, _ := time.LoadLocation("UTC")
 	now := time.Now()
 	t := time.Unix(cAmount, 0).In(loc)
-	hour, min, sec := t.Clock()
+	_, min, sec := t.Clock()
+
+	hour := int((cAmount - int64(sec) - int64(min)*60) / 3600)
 
 	fmt.Printf(string(colorGreen))
 	fmt.Print("\n")
@@ -203,7 +205,9 @@ func TimeCalc(from int64, to int64, listOfData []Result) []Result {
 func UnixToHMS(cAmount int64) (int, int, int) {
 	loc, _ := time.LoadLocation("UTC")
 	t := time.Unix(cAmount, 0).In(loc)
-	hour, min, sec := t.Clock()
+	_, min, sec := t.Clock()
+
+	hour := int((cAmount - int64(sec) - int64(min)*60) / 3600)
 
 	return hour, min, sec
 }

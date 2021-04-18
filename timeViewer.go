@@ -45,7 +45,8 @@ func PrintSumResult(listOfData []Result) {
 	for _, v := range listOfData {
 		_allTime += v.Sum
 	}
-	hour, min, sec := UnixToHMS(_allTime)
+	_, min, sec := UnixToHMS(_allTime)
+	hour := int((_allTime - int64(sec) - int64(min)*60) / 3600)
 
 	fmt.Printf(string(colorGreen))
 	fmt.Print("\n")
@@ -56,11 +57,13 @@ func PrintSumResult(listOfData []Result) {
 
 		fmt.Printf(string(colorGreen))
 		fmt.Print("["+v.GroupName+"]", string(colorReset))
-		hour_g, min_g, sec_g := UnixToHMS(v.Sum)
+		_, min_g, sec_g := UnixToHMS(v.Sum)
+		hour_g := int((v.Sum - int64(sec) - int64(min)*60) / 3600)
 		fmt.Println(" " + strconv.Itoa(hour_g) + "h " + strconv.Itoa(min_g) + "m " + strconv.Itoa(sec_g) + "s")
 
 		for _, r := range v.SumGroup {
-			hour_sps, min_sps, sec_sps := UnixToHMS(r.Sum)
+			_, min_sps, sec_sps := UnixToHMS(r.Sum)
+			hour_sps := int((v.Sum - int64(sec) - int64(min)*60) / 3600)
 			fmt.Println("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
 		}
 		fmt.Print("\n")
