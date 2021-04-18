@@ -63,7 +63,7 @@ func PrintSumResult(listOfData []Result) {
 
 		for _, r := range v.SumGroup {
 			_, min_sps, sec_sps := UnixToHMS(r.Sum)
-			hour_sps := int((v.Sum - int64(sec) - int64(min)*60) / 3600)
+			hour_sps := int((r.Sum - int64(sec) - int64(min)*60) / 3600)
 			fmt.Println("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
 		}
 		fmt.Print("\n")
