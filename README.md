@@ -12,6 +12,13 @@ a work time management CLI tool for any platforms
     - golang
 
 ## development with a docker
+
+### 1. turn true the DOCKER_DEVELOPMENT variable
+- in the main.go at var section, there is a variable called ```DOCKER_DEVELOPMENT```
+- when its true, u can develop with docker
+
+### 2. launch docker
+
 ```bash
 # build go image
 sudo docker-compose build
@@ -20,6 +27,8 @@ sudo docker-compose up -d
 # exec go command using docker envinroment
 sudo docker-compose exec jobgosh go run *.go
 ```
+
+
 
 ## installation
 
@@ -94,6 +103,13 @@ set PATH ~/.jobgosh : "$PATH"
     - golang
 
 ## ドッカーを使った開発
+
+### 1. DOCKER_DEVELOPMENT定数をTRUEにセット
+- main.goを見てください、 varセクションに```DOCKER_DEVELOPMENT```という定数が見つかると思います
+- これがTRUEの時はdocker環境での開発をするためのパスを通すことができます
+
+### 2. ドッカーを立ち上げます
+
 ```bash
 # イメージをビルド
 sudo docker-compose build

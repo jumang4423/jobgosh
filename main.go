@@ -11,11 +11,12 @@ import (
 
 // variables
 var (
-	Version   string = "v0.1"
-	Revision  string = "17/04/2021"
-	logPath   string = "log/"
-	groupPath string = "group/"
-	homePath  string = "/go/src/work/" // usr.HomeDir
+	DOCKER_DEVELOPMENT        = true
+	Version            string = "v0.1"
+	Revision           string = "17/04/2021"
+	logPath            string = "log/"
+	groupPath          string = "group/"
+	homePath           string = "/go/src/work/" // usr.HomeDir
 
 	colorReset string = "\033[0m"
 	colorRed   string = "\033[31m"
@@ -26,8 +27,10 @@ var (
 func main() {
 
 	// disable when u develop
-	usr, _ := user.Current()
-	homePath = usr.HomeDir + "/.jobgosh/"
+	if !DOCKER_DEVELOPMENT {
+		usr, _ := user.Current()
+		homePath = usr.HomeDir + "/.jobgosh/"
+	}
 
 	// init flags
 	times := flag.String("times", "", "see how long u spend times for each group")
