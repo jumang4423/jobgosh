@@ -41,8 +41,6 @@ func IsExist(dir string) bool {
 
 func LoadGroupJson() []Group {
 
-	fmt.Println(homePath + groupPath + "group.json")
-
 	// load json file
 	bytes, err := ioutil.ReadFile(homePath + groupPath + "group.json")
 	if err != nil {
