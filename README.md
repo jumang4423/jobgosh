@@ -1,7 +1,7 @@
 <h1 align="center"> <a href="#english">english</a> |<a href="#japanese">日本語</a></h1>
 
 <!-- ![README LOGO](_img/bak.png) -->
-# jobgosh
+# jobgosh | job with golang on shell
 
 a work time management CLI tool for any platforms
 
@@ -39,7 +39,7 @@ default, this script add path **both bash/zsh & fish**
 
 - ```jobgosh -t [period of time]``` 
 
-    see how long u spend times for each group.
+    see how long u spend times for each group
 
     [period of time] shoule be like...
 
@@ -47,7 +47,7 @@ default, this script add path **both bash/zsh & fish**
     - year (this year)
     - all (all the time)
 
-- ```gpshr -w [up | down]``` 
+- ```jobgosh -w [up | down]``` 
 
     ```up``` to start work
 
@@ -63,17 +63,27 @@ try import them into each shell settings:
 ``` ~/.profile ```
 
 ```bash
-export PATH="~/.gpshr" : "$PATH" 
+export PATH="~/.jobgosh" : "$PATH" 
 ```
 
 ### fish
     
-``` ~/.config/fish/conf.d/gpshr.fish```
+``` ~/.config/fish/conf.d/jobgosh.fish```
 
 ```bash
-set PATH ~/.gpshr : "$PATH" 
+set PATH ~/.jobgosh : "$PATH" 
 ```
 
+## ERROR MEMOS
+
+- #01
+    -t !== month, year or all
+- #02
+    -w !== up or down
+- #03
+    log directory error
+- #04
+    group json not found
 
 <h1 align="left" id="japanese"> 🇯🇵日本語<h1>
 
@@ -117,7 +127,7 @@ chmod +x install.sh
     - year (今年の合算時間)
     - all (いままでの合算時間)
 
-- ```gpshr -w [up | down]``` 
+- ```jobgosh -w [up | down]``` 
 
     ```up```　で作業を始める時のコマンドです
 
@@ -133,13 +143,13 @@ chmod +x install.sh
 ``` ~/.profile ```
 
 ```bash
-export PATH="~/.gpshr" : "$PATH" 
+export PATH="~/.jobgosh" : "$PATH" 
 ```
 
 ### fish
     
-``` ~/.config/fish/conf.d/gpshr.fish```
+``` ~/.config/fish/conf.d/jobgosh.fish```
 
 ```bash
-set PATH ~/.gpshr : "$PATH" 
+set PATH ~/.jobgosh : "$PATH" 
 ```
