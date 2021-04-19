@@ -1,6 +1,6 @@
 <h1 align="center"> <a href="#english">english</a> |<a href="#japanese">日本語</a></h1>
 
-<!-- ![README LOGO](_img/bak.png) -->
+![README LOGO](_img/bk.png)
 # jobgosh | job management tool made with golang for shell
 
 a multi-platform work time management CLI tool to track and improve your day to day workflow
