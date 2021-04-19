@@ -61,12 +61,19 @@ func SaveTimeStamp(directoryName string, progress string) int64 {
 		}
 
 		_now := time.Now().Format("2006/01/02 15:04:05")
-		allLog[len(allLog)-1].Down = _now
-		allLog[len(allLog)-1].IsVisible = true
-		str, _ := json.MarshalIndent(allLog, "", "   ")
-		ioutil.WriteFile(homePath+logPath+directoryName+".json", str, 0644)
+		// if down isnt already declared
+		if allLog[len(allLog)-1].Down != "" {
+			allLog[len(allLog)-1].Down = _now
+			allLog[len(allLog)-1].IsVisible = true
+			str, _ := json.MarshalIndent(allLog, "", "   ")
+			ioutil.WriteFile(homePath+logPath+directoryName+".json", str, 0644)
 
-		cAmount = UnixTimeCalc(allLog[len(allLog)-1].Up, allLog[len(allLog)-1].Down)
+			cAmount = UnixTimeCalc(allLog[len(allLog)-1].Up, allLog[len(allLog)-1].Down)
+		} else {
+			fmt.Println("\n> down is already timestamped\n")
+			os.Exit(0)
+		}
+
 	}
 
 	return cAmount
