@@ -1,4 +1,7 @@
-package main
+package types
+
+
+
 
 type Group struct {
 	Group     string   `json:"group"`
@@ -11,12 +14,12 @@ type Log struct {
 	IsVisible bool   `json:"isVisible"`
 }
 
-type spaceNdCalc struct {
+type SpaceNdCalc struct {
 	WorkSpace string
 	Sum       int64
 }
 type Result struct {
 	GroupName string
 	Sum       int64
-	SumGroup  []spaceNdCalc
+	SumGroup  []SpaceNdCalc
 }

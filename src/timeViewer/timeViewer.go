@@ -1,7 +1,9 @@
-package main
+package timeViewer
 
 import (
 	"fmt"
+	types "jobgosh/src/typesAndVars"
+	"jobgosh/src/utils"
 	"strconv"
 )
 
@@ -9,17 +11,19 @@ import (
 
 func TimeViewer(from int64, to int64) {
 
-	var listOfData []Result
+	var listOfData []types.Result
 	// get a group Json
-	groupJson := LoadGroupJson()
+	groupJson := utils.LoadGroupJson()
 	for _, v := range groupJson {
 		// result time of each group
-		var _indexedResult Result
+		var _indexedResult types.Result
 		_indexedResult.GroupName = v.Group
 
 		for _, p := range v.WorkSpace {
 			// result time of each workSpace
-			var _current spaceNdCalc
+			
+			var _current types.SpaceNdCalc
+
 			_current.WorkSpace = p
 			_indexedResult.SumGroup = append(_indexedResult.SumGroup, _current)
 		}
@@ -27,7 +31,7 @@ func TimeViewer(from int64, to int64) {
 		listOfData = append(listOfData, _indexedResult)
 	}
 
-	listOfData = TimeCalc(from, to, listOfData)
+	listOfData = utils.TimeCalc(from, to, listOfData)
 
 	PrintSumResult(listOfData)
 
@@ -38,31 +42,31 @@ func TimeViewer(from int64, to int64) {
 }
 
 // print calculated datas
-func PrintSumResult(listOfData []Result) {
+func PrintSumResult(listOfData []types.Result) {
 
 	// all time calclation
 	var _allTime int64
 	for _, v := range listOfData {
 		_allTime += v.Sum
 	}
-	_, min, sec := UnixToHMS(_allTime)
+	_, min, sec := utils.UnixToHMS(_allTime)
 	hour := int((_allTime - int64(sec) - int64(min)*60) / 3600)
 
-	fmt.Printf(string(colorGreen))
+	fmt.Printf(string(types.ColorGreen))
 	fmt.Print("\n")
-	fmt.Print("[*]", string(colorReset))
+	fmt.Print("[*]", string(types.ColorReset))
 	fmt.Println(" " + strconv.Itoa(hour) + "h " + strconv.Itoa(min) + "m " + strconv.Itoa(sec) + "s\n")
 
 	for _, v := range listOfData {
 
-		fmt.Printf(string(colorGreen))
-		fmt.Print("["+v.GroupName+"]", string(colorReset))
-		_, min_g, sec_g := UnixToHMS(v.Sum)
+		fmt.Printf(string(types.ColorGreen))
+		fmt.Print("["+v.GroupName+"]", string(types.ColorReset))
+		_, min_g, sec_g := utils.UnixToHMS(v.Sum)
 		hour_g := int((v.Sum - int64(sec) - int64(min)*60) / 3600)
 		fmt.Println(" " + strconv.Itoa(hour_g) + "h " + strconv.Itoa(min_g) + "m " + strconv.Itoa(sec_g) + "s")
 
 		for _, r := range v.SumGroup {
-			_, min_sps, sec_sps := UnixToHMS(r.Sum)
+			_, min_sps, sec_sps := utils.UnixToHMS(r.Sum)
 			hour_sps := int((r.Sum - int64(sec) - int64(min)*60) / 3600)
 			fmt.Println("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
 		}
