@@ -33,9 +33,9 @@ func PrintProgress(_group string, directoryName string, progress string, cAmount
 	fmt.Printf(string(types.ColorGreen))
 	fmt.Print("\n", string(types.ColorCyan))
 
-	if progress == "up" || progress == "u" {
+	if progress == "up" {
 		fmt.Println("> timestamped at " + now.Format("2006/01/02 15:04:05") + "\n")
-	} else if progress == "down" || progress == "d" {
+	} else if progress == "down" {
 		fmt.Print("> timestamped at " + now.Format("2006/01/02 15:04:05"))
 		fmt.Print("\n")
 		fmt.Println("> " + strconv.Itoa(hour) + "h " + strconv.Itoa(min) + "m " + strconv.Itoa(sec) + "s added\n")

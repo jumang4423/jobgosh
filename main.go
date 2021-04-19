@@ -39,19 +39,20 @@ func main() {
 		if *work == "up" ||
 			*work == "u" ||
 			*work == "down" ||
-			*work == "d" ||
-			*w == "up" ||
+			*work == "d" {
+			wTriggers.WorkTriggers(*work) // w command trrigered
+		} else if *w == "up" ||
 			*w == "u" ||
 			*w == "down" ||
 			*w == "d" {
-			wTriggers.WorkTriggers(*work) // w command trrigered
+			wTriggers.WorkTriggers(*w) // w command trrigered
 		} else {
 			fmt.Println(string(types.ColorRed), "! ERROR #01, bad hook parameter", string(types.ColorReset))
 			os.Exit(0)
 		}
 
 	} else if *times != "" || *t != "" {
-		if *times == "all" || *times == "a" {
+		if *times == "all" || *times == "a" || *t == "all" || *t == "a" {
 			loc, _ := time.LoadLocation("UTC")
 			_now := time.Now().AddDate(0, 0, 1).In(loc).Unix()
 			tv.TimeViewer(0, _now) // t command trrigered
