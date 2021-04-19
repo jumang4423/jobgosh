@@ -7,6 +7,4 @@ var (
 	LogPath            string = "log/"
 	GroupPath          string = "group/"
 	HomePath           string = "/go/src/work/" // usr.HomeDir
-
-	
 )

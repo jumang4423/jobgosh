@@ -1,8 +1,5 @@
 package types
 
-
-
-
 type Group struct {
 	Group     string   `json:"group"`
 	WorkSpace []string `json:"workSpace"`
