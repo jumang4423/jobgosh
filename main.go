@@ -12,10 +12,8 @@ import (
 	"time"
 )
 
-
-
 func main() {
-	
+
 	// disable when u develop
 	if !types.DOCKER_DEVELOPMENT {
 		usr, _ := user.Current()
@@ -24,27 +22,36 @@ func main() {
 
 	// init flags
 	times := flag.String("times", "", "see how long u spend times for each group")
+	t := flag.String("t", "", "same as -times")
 	from := flag.String("from", "", "duration flag like YYYY/MM/DD")
 	to := flag.String("to", "", "duration flag like YYYY/MM/DD")
 	work := flag.String("work", "", "start work or finish work by up or work")
+	w := flag.String("w", "", "same as -work")
 
 	// parse flags
 	flag.Parse()
 
 	// cmd selector
-	if *times == "" && *work == "" && *to == "" && *from == "" {
+	if *times == "" && *work == "" && *to == "" && *from == "" && *w == "" && *t == "" {
 		Help() // no command
-	} else if *work != "" {
+	} else if *work != "" || *w != "" {
 
-		if *work == "up" || *work == "down" {
+		if *work == "up" ||
+			*work == "u" ||
+			*work == "down" ||
+			*work == "d" ||
+			*w == "up" ||
+			*w == "u" ||
+			*w == "down" ||
+			*w == "d" {
 			wTriggers.WorkTriggers(*work) // w command trrigered
 		} else {
 			fmt.Println(string(types.ColorRed), "! ERROR #01, bad hook parameter", string(types.ColorReset))
 			os.Exit(0)
 		}
 
-	} else if *times != "" {
-		if *times == "all" {
+	} else if *times != "" || *t != "" {
+		if *times == "all" || *times == "a" {
 			loc, _ := time.LoadLocation("UTC")
 			_now := time.Now().AddDate(0, 0, 1).In(loc).Unix()
 			tv.TimeViewer(0, _now) // t command trrigered
