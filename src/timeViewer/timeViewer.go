@@ -1,4 +1,4 @@
-package main
+package timeViewer
 
 import (
 	"fmt"
