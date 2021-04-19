@@ -1,9 +1,9 @@
 <h1 align="center"> <a href="#english">english</a> |<a href="#japanese">日本語</a></h1>
 
 <!-- ![README LOGO](_img/bak.png) -->
-# jobgosh | job with golang on shell
+# jobgosh | job management tool made with golang for shell
 
-a work time management CLI tool for any platforms
+a multi-platform work time management CLI tool to track and improve your day to day workflow
 
 <h1 align="left" id="english"> 🇺🇸english<h1>
 
@@ -17,14 +17,14 @@ a work time management CLI tool for any platforms
 - in the main.go at var section, there is a variable called ```DOCKER_DEVELOPMENT```
 - when its true, u can develop with docker
 
-### 2. launch docker
+### 2. launch the docker
 
 ```bash
 # build go image
 sudo docker-compose build
 # launch image on background process
 sudo docker-compose up -d
-# exec go command using docker envinroment
+# exec go to command using docker envinroment
 sudo docker-compose exec jobgosh go run *.go
 ```
 
@@ -48,27 +48,27 @@ default, this script add path **both bash/zsh & fish**
 
 - ```jobgosh -times all``` 
 
-    see how long u spend times for each group
+    see how long you spent your time for each group
 
 - ```jobgosh -from [YYYY/MM/DD] -to [YYYY/MM/DD]``` 
 
     more specific option of -t all
 
-    u can choose the duration
+    you can choose the duration of time
 
 - ```jobgosh -work [up | down]```
 
-    will be assigned current directory as a work space
+    the current directory will be assigned as work space
 
     ```up``` to start work
 
     ```down``` to finish work
 
-    listen, u need to ```down``` unless u waste whole ur work time
+    listen, you need to ```down``` unless you want waste whole ur work time
 
 
-## doesnt work? 
-try import them into each shell settings:
+## doesn't work? 
+try importing them into each shell settings:
 ### bash | zsh
 
 ``` ~/.profile ```
