@@ -64,7 +64,7 @@ default, this script add path **both bash/zsh & fish**
 
     ```down``` to finish work
 
-    listen, you need to ```down``` unless you want waste whole ur work time
+    listen, you need to ```down``` unless you want waste your whole work time
 
 
 ## doesn't work? 
