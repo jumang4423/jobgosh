@@ -28,10 +28,9 @@ func SaveTimeStamp(directoryName string, progress string) int64 {
 		if len(allLog) == 0 {
 			os.Exit(0)
 		}
-
 		_now := time.Now().Format("2006/01/02 15:04:05")
 		// if down isnt already declared
-		if allLog[len(allLog)-1].Down != "" {
+		if allLog[len(allLog)-1].Down == "" {
 			allLog[len(allLog)-1].Down = _now
 			allLog[len(allLog)-1].IsVisible = true
 			str, _ := json.MarshalIndent(allLog, "", "   ")
