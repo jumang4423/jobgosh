@@ -23,7 +23,7 @@ func WorkTriggers(w string) {
 	}
 
 	// casting
-	var _progress string
+	var _progress string = w
 	if w == "u" {
 		_progress = "up"
 	}
