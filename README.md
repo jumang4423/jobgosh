@@ -1,3 +1,4 @@
+<!-- DO NOT REMOVE - contributor_list:data:start:["jumang4423", "OdriMezanny", "ranon-rat"]:end -->
 <h1 align="center"> <a href="#english">english</a> |<a href="#japanese">日本語</a></h1>
 
 ![README LOGO](_img/bk.png)
@@ -176,3 +177,17 @@ sudo docker-compose up -d
 # go run *.go をコンテナ内で実行する
 sudo docker-compose exec jobgosh go run *.go
 ```
+
+<!-- prettier-ignore-start -->
+<!-- DO NOT REMOVE - contributor_list:start -->
+## 👥 Contributors
+
+
+- **[@jumang4423](https://github.com/jumang4423)**
+
+- **[@OdriMezanny](https://github.com/OdriMezanny)**
+
+- **[@ranon-rat](https://github.com/ranon-rat)**
+
+<!-- DO NOT REMOVE - contributor_list:end -->
+<!-- prettier-ignore-end -->
