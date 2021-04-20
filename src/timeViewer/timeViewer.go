@@ -70,7 +70,10 @@ func PrintSumResult(listOfData []types.Result) {
 			hour_sps := int((r.Sum - int64(sec) - int64(min)*60) / 3600)
 			fmt.Print("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
 			if r.IsUp {
-				fmt.Println(" [ working ]")
+				fmt.Print("", string(types.ColorCyan))
+				fmt.Print(" [ working ]")
+				fmt.Print("", string(types.ColorReset))
+				fmt.Println("")
 			} else {
 				fmt.Print("\n")
 			}
