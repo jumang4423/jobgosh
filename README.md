@@ -9,7 +9,7 @@ a multi-platform work time management CLI tool to track and improve your day to 
 
 ## dependancies for build
 
-    - golang
+    - go
 
 
 ## installation
@@ -100,7 +100,7 @@ sudo docker-compose exec jobgosh go run *.go
 
 ## ビルドのための依存パッケージ
 
-    - golang
+    - go
 
 
 ## インストール方法
