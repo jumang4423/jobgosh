@@ -21,7 +21,7 @@ func TimeViewer(from int64, to int64) {
 
 		for _, p := range v.WorkSpace {
 			// result time of each workSpace
-			
+
 			var _current types.SpaceNdCalc
 
 			_current.WorkSpace = p
@@ -68,7 +68,12 @@ func PrintSumResult(listOfData []types.Result) {
 		for _, r := range v.SumGroup {
 			_, min_sps, sec_sps := utils.UnixToHMS(r.Sum)
 			hour_sps := int((r.Sum - int64(sec) - int64(min)*60) / 3600)
-			fmt.Println("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
+			fmt.Print("> " + r.WorkSpace + " : " + strconv.Itoa(hour_sps) + "h " + strconv.Itoa(min_sps) + "m " + strconv.Itoa(sec_sps) + "s")
+			if r.IsUp {
+				fmt.Println(" [ working ]")
+			} else {
+				fmt.Print("\n")
+			}
 		}
 		fmt.Print("\n")
 	}

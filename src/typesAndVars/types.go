@@ -14,6 +14,7 @@ type Log struct {
 type SpaceNdCalc struct {
 	WorkSpace string
 	Sum       int64
+	IsUp      bool
 }
 type Result struct {
 	GroupName string

@@ -40,6 +40,7 @@ func TimeCalc(from int64, to int64, listOfData []types.Result) []types.Result {
 			// result sum of workSpace time
 			var workSpaceSum int64 = SpaceSumCalc(logJson, from, to)
 			listOfData[i].SumGroup[j].Sum = workSpaceSum
+			listOfData[i].SumGroup[j].IsUp = !logJson[len(logJson)-1].IsVisible
 			spaceSum += workSpaceSum
 		}
 
