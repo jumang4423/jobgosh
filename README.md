@@ -6,8 +6,19 @@
 
 a multi-platform work time management CLI tool to track and improve your day to day workflow
 
+<!-- prettier-ignore-start -->
 <!-- DO NOT REMOVE - contributor_list:start -->
+## 👥 Contributors
+
+
+- **[@jumang4423](https://github.com/jumang4423)**
+
+- **[@OdriMezanny](https://github.com/OdriMezanny)**
+
+- **[@ranon-rat](https://github.com/ranon-rat)**
+
 <!-- DO NOT REMOVE - contributor_list:end -->
+<!-- prettier-ignore-end -->
 
 
 <h1 align="left" id="english"> 🇺🇸english<h1>
@@ -177,17 +188,3 @@ sudo docker-compose up -d
 # go run *.go をコンテナ内で実行する
 sudo docker-compose exec jobgosh go run *.go
 ```
-
-<!-- prettier-ignore-start -->
-<!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
-
-
-- **[@jumang4423](https://github.com/jumang4423)**
-
-- **[@OdriMezanny](https://github.com/OdriMezanny)**
-
-- **[@ranon-rat](https://github.com/ranon-rat)**
-
-<!-- DO NOT REMOVE - contributor_list:end -->
-<!-- prettier-ignore-end -->
