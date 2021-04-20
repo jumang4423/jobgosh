@@ -11,24 +11,6 @@ a multi-platform work time management CLI tool to track and improve your day to 
 
     - golang
 
-## development with a docker
-
-### 1. turn true the DOCKER_DEVELOPMENT variable
-- in the main.go at var section, there is a variable called ```DOCKER_DEVELOPMENT```
-- when its true, u can develop with docker
-
-### 2. launch the docker
-
-```bash
-# build go image
-sudo docker-compose build
-# launch image on background process
-sudo docker-compose up -d
-# exec go to command using docker envinroment
-sudo docker-compose exec jobgosh go run *.go
-```
-
-
 
 ## installation
 
@@ -85,6 +67,24 @@ export PATH="~/.jobgosh" : "$PATH"
 set PATH ~/.jobgosh : "$PATH" 
 ```
 
+## development with a docker
+
+### 1. turn true the DOCKER_DEVELOPMENT variable
+- in the main.go at var section, there is a variable called ```DOCKER_DEVELOPMENT```
+- when its true, u can develop with docker
+
+### 2. launch the docker
+
+```bash
+# build go image
+sudo docker-compose build
+# launch image on background process
+sudo docker-compose up -d
+# exec go to command using docker envinroment
+sudo docker-compose exec jobgosh go run *.go
+```
+
+
 ## ERROR MEMOS
 
 - #01
@@ -102,22 +102,6 @@ set PATH ~/.jobgosh : "$PATH"
 
     - golang
 
-## ドッカーを使った開発
-
-### 1. DOCKER_DEVELOPMENT定数をTRUEにセット
-- main.goを見てください、 varセクションに```DOCKER_DEVELOPMENT```という定数が見つかると思います
-- これがTRUEの時はdocker環境での開発をするためのパスを通すことができます
-
-### 2. ドッカーを立ち上げます
-
-```bash
-# イメージをビルド
-sudo docker-compose build
-# バックグラウンドでイメージを立ち上げる
-sudo docker-compose up -d
-# go run *.go をコンテナ内で実行する
-sudo docker-compose exec jobgosh go run *.go
-```
 
 ## インストール方法
 
@@ -170,4 +154,21 @@ export PATH="~/.jobgosh" : "$PATH"
 
 ```bash
 set PATH ~/.jobgosh : "$PATH" 
+```
+
+## ドッカーを使った開発
+
+### 1. DOCKER_DEVELOPMENT定数をTRUEにセット
+- main.goを見てください、 varセクションに```DOCKER_DEVELOPMENT```という定数が見つかると思います
+- これがTRUEの時はdocker環境での開発をするためのパスを通すことができます
+
+### 2. ドッカーを立ち上げます
+
+```bash
+# イメージをビルド
+sudo docker-compose build
+# バックグラウンドでイメージを立ち上げる
+sudo docker-compose up -d
+# go run *.go をコンテナ内で実行する
+sudo docker-compose exec jobgosh go run *.go
 ```
