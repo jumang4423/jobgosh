@@ -25,7 +25,10 @@ a multi-platform work time management CLI tool to track and improve your day to 
 
 ## dependancies for build
 
-    - go
+    - go 
+        macOS, brew install go
+        debian, sudo apt install go -y
+        arch, sudo pacman -S go
 
 
 ## installation
