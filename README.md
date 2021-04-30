@@ -130,8 +130,8 @@ sudo docker-compose exec jobgosh go run *.go
 以下のコマンドを実行:
 
 ```bash
-chmod +x install.sh
-./install.sh
+chmod +x scripts/install.sh
+./scripts/install.sh
 ```
 デフォルトでは **bash zsh & fish** にパスが通ります
 
