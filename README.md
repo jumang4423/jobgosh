@@ -36,8 +36,8 @@ a multi-platform work time management CLI tool to track and improve your day to 
 run this command below:
 
 ```bash
-chmod +x install.sh
-./install.sh
+chmod +x scripts/install.sh
+./scripts/install.sh
 ```
 default, this script add path **both bash/zsh & fish**
 
@@ -119,7 +119,10 @@ sudo docker-compose exec jobgosh go run *.go
 
 ## ビルドのための依存パッケージ
 
-    - go
+    - go 
+        macOS, brew install go
+        debian, sudo apt install go -y
+        arch, sudo pacman -S go
 
 
 ## インストール方法

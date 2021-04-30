@@ -10,10 +10,10 @@ import (
 
 func Dirsearch(dir string) []string {
 
+	// get file path then return the array of file paths
 	files, err := ioutil.ReadDir(dir)
 
 	if err != nil {
-		
 		fmt.Println(string(types.ColorRed), "! error #03, log directory error", string(types.ColorReset))
 		os.Exit(0)
 	}
