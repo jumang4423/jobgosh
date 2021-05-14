@@ -4,6 +4,8 @@
 ![README LOGO](_img/bk.png)
 # jobgosh | job management tool made with golang for shell
 
+[![Contributor List](https://github.com/jumang4423/jobgosh/actions/workflows/contributor_list.yml/badge.svg)](https://github.com/jumang4423/jobgosh/actions/workflows/contributor_list.yml)
+
 a multi-platform work time management CLI tool to track and improve your day to day workflow
 
 <!-- prettier-ignore-start -->
